@@ -1,15 +1,7 @@
-import './App.css'
-import Home from './pages/home/Home'
+import { Outlet } from "react-router-dom";
 
 function App() {
-
-  const nome = ""
-
-  return (
-    <>
-      <Home />
-    </>
-  )
+  return <Outlet />
 }
 
 export default App
