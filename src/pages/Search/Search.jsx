@@ -27,8 +27,9 @@ export function Search() {
           {Users.map((item) => {
               return (
                   <CardUser
-                      key={item._id}
-                      fotoPerfil={item.fotoPerfil} name={item.name}
+                  key={item._id}
+                  fotoPerfil={item.fotoPerfil}
+                  name={item.name}
                     />
               )
           })}

@@ -1,5 +1,4 @@
 import { useState, useEffect} from "react";
-import { NavBar } from "../../componentes/NavBar/NavBar";
 import { Card } from "../../componentes/Card/Card";
 import { getAllPost } from "../../Services/PostService";
 
@@ -14,6 +13,7 @@ export function Home() {
   useEffect(()=>{
   findAllPosts()
   }, [])
+  
  
 
   return (
@@ -22,6 +22,7 @@ export function Home() {
         return (
           <Card
             key={item.id}
+            data={item.data}
             foto={item.foto}
             title={item.title}
             likes={item.likes}

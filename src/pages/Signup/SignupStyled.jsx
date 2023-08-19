@@ -41,12 +41,10 @@ export const Div = styled.div`
 `
 export const DivInput = styled.div`
   margin-left: 2rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-
-  
 `;
 
 export const Input = styled.input`
@@ -92,6 +90,7 @@ export const DivTermos = styled.div`
 export const DivButton = styled.div`
   display: flex;
   justify-content: center;
+ 
 
   button {
     background-color: #ffffff;
@@ -105,4 +104,10 @@ export const DivButton = styled.div`
       background-color: #adadad;
     }
   }
+`;
+
+export const Alinhar = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 `;

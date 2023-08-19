@@ -8,16 +8,32 @@ import {
   Span,
   Interaçao,
 } from "./CardStyle";
+
 export function Card(props) {
+
+    const formatDateTime = (dateTime) => {
+      const options = {
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "UTC",
+      };
+
+      return new Date(dateTime).toLocaleString("en-US", options);
+    };
+
+  
     return (
       <>
         <Container>
           <Nav>
             <FotoPerfil src={props.fotoUser} alt="imagem de perfil usuario" />
             <Name>{props.name}</Name>
+            <p>{formatDateTime(props.data)}</p>
           </Nav>
           <div>
-            <Title>{props.title}</Title>
+            <Title>
+              <strong>{`${props.name}`}</strong>:{` ${props.title}`}
+            </Title>
             <FotoPost src={props.foto} alt="imagem da postagem" />
           </div>
           <Interaçao>

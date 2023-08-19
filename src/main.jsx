@@ -7,6 +7,8 @@ import { Home } from './pages/Home/Home.jsx'
 import { Search } from './pages/Search/Search.jsx'
 import { Signup } from './pages/Signup/Signup.jsx';
 import { Signin } from './pages/Signin/Signin.jsx';
+import { Profile } from './pages/Profile/Profile.jsx'
+import { Postagem } from './componentes/Postagem/Postagem.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -20,6 +22,15 @@ const Router = createBrowserRouter([
       {
         path: "/search/:name",
         element: <Search />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+
+      {
+        path: "/postagem",
+        element: <Postagem />,
       },
     ],
   },

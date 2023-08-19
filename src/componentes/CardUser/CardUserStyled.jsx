@@ -1,22 +1,29 @@
 import { styled } from "styled-components"
 
 export const Container = styled.div`
-    display: flex;
-    align-items: center;
-    background-color: #000;
-    width: 100%;
-    height: 7rem;
-    padding:1rem;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    45deg,
+    #0c0c0c,
+    #2c2b2b
+  );
+  margin: auto;
+  max-width: 800px;
+  height: 7rem;
+  padding: 1rem;
+  border-bottom: 1px solid #313131;
 
-    img{
-        border-radius:50%;
-        width:6rem;
-        margin:1.5rem;
-    }
-
-`
+  img {
+    border-radius: 50%;
+    width: 12%;
+    margin: 1.5rem;
+  }
+`;
 export const Name = styled.h1`
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
+    font-size:1rem;
+    font-weight:100;
     padding-left:1rem;
 `

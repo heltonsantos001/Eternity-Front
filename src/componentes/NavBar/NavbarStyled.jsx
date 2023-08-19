@@ -46,8 +46,6 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: -1px;
   width: 100%;
   padding: 1.5rem 1rem;
   z-index: 1;
@@ -89,5 +87,10 @@ export const ErrorSpan = styled.span`
   align-items: center;
   height: 5rem;
   width: 100%;
+
+`
+export const MiniImg = styled.img`
+  width:2.5rem;
+  border-radius:50%;
 
 `
