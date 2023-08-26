@@ -3,35 +3,44 @@ import { SearchName } from "../../Services/UserService";
 import { useEffect, useState } from "react";
 import { CardUser } from "../../componentes/CardUser/CardUser";
 
+
+
 export function Search() {
   const { name } = useParams();
   const [Users, setUsers] = useState([]);
-
-  async function search() {
+  
+  async function searchUser() {
     try {
       const UsersApi = await SearchName(name);
-      setUsers(UsersApi.data);
-      console.log(UsersApi.data);
-    } catch (err) {
-      console.log(err);
-      setUsers([]);
+      const users = UsersApi.data
+      
+      setUsers(users)
+    } catch (error) {
+      console.log(error)
     }
   }
 
+
+
   useEffect(() => {
-    search();
+    searchUser();
+   
   }, [name]);
+
     
   return (
     <>
           {Users.map((item) => {
               return (
-                  <CardUser
+                <CardUser
                   key={item._id}
+                  id={item._id}
+                  verified={item.verified}
+                  founder={item.founder}
                   fotoPerfil={item.fotoPerfil}
                   name={item.name}
-                    />
-              )
+                />
+              );
           })}
     </>
   );

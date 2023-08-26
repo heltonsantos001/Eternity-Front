@@ -3,21 +3,22 @@ import {
   PreImage,
   DivButton,
   SpacePreImg,
-} from "./PostagemStyled";
-import { Postar } from "../../Services/PostService";
+} from "./EditProfileStyled";
+import { UserUpdate } from "../../Services/UserService";
 import React, { useState, useRef } from "react";
 import { getTokenFromLocalStorage } from "../../componentes/Auth/AuthProvider.jsx";
-import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-export const Postagem = (props) => {
+import { useNavigate } from "react-router-dom";
+
+export const EditProfile = (props) => {
   const token = getTokenFromLocalStorage();
-  const navigate = useNavigate();
 
   const [textValue, setTextValue] = useState("");
   const [fileValue, setFileValue] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
   const [isPosted, setIsPosted] = useState(false);
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleTextChange = (event) => {
     setTextValue(event.target.value);
@@ -42,10 +43,10 @@ export const Postagem = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!textValue || !fileValue) {
+    if (!textValue && !fileValue) {
       swal({
-        title: "POSTAR",
-        text: "Por favor, preencha todos os campos.",
+        title: "EDITAR PERFIL",
+        text: "Por favor, preencha ao menos um campos.",
         icon: "warning",
         confirmButtonText: "Ok",
       });
@@ -54,27 +55,29 @@ export const Postagem = (props) => {
 
     const formData = new FormData();
 
-    formData.append("title", textValue);
+    formData.append("name", textValue);
 
     if (fileValue) {
       formData.append("imagem", fileValue);
     }
 
     try {
-      await Postar(formData, token);
+
+       await UserUpdate(formData, token);
+
       swal({
-        title: "POSTAR",
-        text: "Post criado com sucesso",
+        title: "EDITAR PERFIL",
+        text: "usuario modificado com sucesso!.",
         icon: "success",
         confirmButtonText: "Ok",
       });
       setIsPosted(true);
-      navigate("/");
+      navigate("/")
     } catch (error) {
       console.error("Error:", error);
-      swal.fire({
-        title: "POSTAR",
-        text: "Erro ao enviar a postagem",
+      swal({
+        title: "EDITAR PERFIL",
+        text: "Erro ao modificar o perfil.",
         icon: "error",
         confirmButtonText: "Ok",
       });
@@ -93,7 +96,7 @@ export const Postagem = (props) => {
             type="text"
             value={textValue}
             onChange={handleTextChange}
-            placeholder="Digite um título"
+            placeholder="Digite um Nome"
           />
           <label htmlFor="fileInput">
             <button type="button" onClick={handleFileIconClick}>
