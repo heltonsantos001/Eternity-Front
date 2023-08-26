@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = "https://eternity-front.vercel.app/"
+const baseUrl = "https://glorious-belt-bear.cyclic.app/"
 
 export async function getAllPost() {
     try {
