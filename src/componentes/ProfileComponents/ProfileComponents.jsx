@@ -35,15 +35,22 @@ export const ProfileComponents = (props) => {
     <>
       <Main>
         <Header>
-          <div
-            style={{
-              backgroundImage: `url(${props.fotoUser})`,
-              backgroundSize: "cover",
-            }}
-          ></div>
+          <img src={props.fotoUser}></img>
           <h3>{props.name}</h3>
-         {verified? <i className="bi bi-patch-check"></i>:""}
-          {founder ? <i className="bi bi-patch-check-fill"></i> : ""}
+          {verified ? (
+            <abbr title="Verificado veterano">
+              <i className="bi bi-patch-check"></i>
+            </abbr>
+          ) : (
+            ""
+          )}
+          {founder ? (
+            <abbr title="Verificado de fundador, so fundadores possui esse verificado.">
+              <i className="bi bi-patch-check-fill"></i>
+            </abbr>
+          ) : (
+            ""
+          )}
         </Header>
         {showButtons ? (
           <Comandos>

@@ -14,7 +14,7 @@ export const Header = styled.div`
   height:6rem;
  
 
-  div {
+  img {
     width:5rem;
     height: 5rem;
     border-radius: 50%;

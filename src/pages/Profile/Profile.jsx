@@ -1,5 +1,4 @@
 import { ProfileComponents } from "../../componentes/ProfileComponents/ProfileComponents.jsx";
-import { PostProfile } from "../../componentes/Post/Post.jsx";
 import React, { useEffect, useState } from "react";
 import {
   getUserIdFromToken,
@@ -10,6 +9,8 @@ import { getAllPostUser } from "../../Services/PostService.js";
 import Eternity from "../../img/Eternity.jpg";
 import { Message } from "../../componentes/ProfileComponents/ProfileStyled";
 import { Delete } from "../../componentes/Delete/Delete.jsx";
+import {Card} from "../../componentes/Card/Card.jsx"
+
 
 export const Profile = () => {
   const [user, setUser] = useState("");
@@ -84,10 +85,8 @@ export const Profile = () => {
       {renderPost ? (
         post.map((item) => {
           return (
-            <PostProfile
+            <Card
               key={item.id}
-              founder={founder}
-              verified={verified}
               id={item.id}
               deletePost={deletePost}
               three={three}

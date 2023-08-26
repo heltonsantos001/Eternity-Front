@@ -6,7 +6,7 @@ import { Message } from "../../componentes/ProfileComponents/ProfileStyled"
 import Eternity from "../../img/Eternity.jpg"
 import { getUserById } from "../../Services/UserService"
 import{getAllPostUser}from'../../Services/PostService'
-import {PostProfile}from '../../componentes/Post/Post'
+import { Card } from "../../componentes/Card/Card.jsx";
 
 export const ProfileUser = () => {
   const [user, setUser] = useState("");
@@ -59,11 +59,9 @@ export const ProfileUser = () => {
       {renderPost ? (
         post.map((item) => {
           return (
-            <PostProfile
+            <Card
               key={item.id}
               id={item.id}
-              founder={founder}
-              verified={verified}
               data={item.data}
               foto={item.foto}
               title={item.title}

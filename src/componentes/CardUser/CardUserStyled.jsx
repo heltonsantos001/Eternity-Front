@@ -15,6 +15,7 @@ export const Container = styled.div`
     width: 4rem;
     height: 4rem;
     margin: 1.5rem;
+    cursor:pointer;
   }
   
   i {
@@ -30,4 +31,5 @@ export const Name = styled.h1`
     font-size:1rem;
     font-weight:100;
     padding-left:1rem;
+    cursor: pointer;
 `
