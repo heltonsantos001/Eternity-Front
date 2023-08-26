@@ -80,11 +80,9 @@ export const Termos = (props) => {
           </p>
           <p>
             <strong>
-              O site pode conter links ou integrações de terceiros. Não somos
-              responsáveis pelas práticas de privacidade ou conteúdo desses
-              terceiros. Ao usar este site, você concorda com estes termos e
-              condições. Se não concordar com qualquer parte deste documento,
-              recomendamos que não continue a utilizar o site.
+              Ao usar este site, você concorda com estes termos e condições. Se
+              não concordar com qualquer parte deste documento, recomendamos que
+              não continue a utilizar o site.
             </strong>
           </p>
         </Div>

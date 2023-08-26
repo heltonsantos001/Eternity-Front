@@ -42,7 +42,7 @@ export function CardUser(props) {
         )}
 
         {verificar ? (
-          <abbr title="Verificado veterano">
+          <abbr title="Verificado de fundador, so fundadores possui esse verificado.">
             <i className="bi bi-patch-check-fill"></i>
           </abbr>
         ) : (

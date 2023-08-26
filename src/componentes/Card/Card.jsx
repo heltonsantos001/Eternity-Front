@@ -13,7 +13,7 @@ import {
   getTokenFromLocalStorage,
   getUserIdFromToken,
 } from "../Auth/AuthProvider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Card(props) {
   const navigate = useNavigate();
@@ -21,6 +21,8 @@ export function Card(props) {
   const { verified } = props;
   const { three } = props;
   const { deletePost } = props;
+  const [showVerified, setShowVerified] = useState(false);
+  const [showFounder, setShowFounder] = useState(false);
 
   const formatDateTime = (dateTime) => {
     const options = {
@@ -68,9 +70,19 @@ export function Card(props) {
   const CommentFunction = () => {
     navigate(`/comment/${props.id}`);
   };
-  const profileNavigate = ()=>{
-    navigate("/profile");
-  }
+  const profileNavigate = () => {
+    if (props.idUser === id) return navigate("/profile");
+    navigate(`/profile/${props.idUser}`);
+  };
+
+  useEffect(() => {
+    if (verified === "true") {
+      setShowVerified(true);
+    }
+    if (founder == "true") {
+      setShowFounder(true);
+    }
+  }, []);
 
   return (
     <>
@@ -82,17 +94,16 @@ export function Card(props) {
             alt="imagem de perfil usuario"
           />
           <Name onClick={profileNavigate}>{props.name}</Name>
-          {verified ? (
+          {showVerified ? (
             <abbr title="Verificado veterano">
-              {" "}
-              <i className="bi bi-patch-check"></i>{" "}
+              <i className="bi bi-patch-check"></i>
             </abbr>
           ) : (
             ""
           )}
-          {founder ? (
+          {showFounder ? (
             <abbr title="Verificado de fundador, so fundadores possui esse verificado.">
-              <i className="bi bi-patch-check-fill"></i>{" "}
+              <i className="bi bi-patch-check-fill"></i>
             </abbr>
           ) : (
             ""

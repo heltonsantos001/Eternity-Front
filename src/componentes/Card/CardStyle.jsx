@@ -33,6 +33,7 @@ export const FotoPerfil = styled.img`
   height: 4rem;
   border-radius: 50%;
   margin: 0 1.5rem 0 0rem;
+  cursor:pointer;
 `;
 
 export const Name = styled.h1`
@@ -40,6 +41,7 @@ export const Name = styled.h1`
   font-size:.6rem;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0 .5rem 0 0;
+  cursor:pointer;
 `;
 
 export const FotoPost = styled.img`

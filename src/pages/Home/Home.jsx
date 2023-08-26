@@ -11,6 +11,7 @@ export function Home() {
   async function findAllPosts() {
     const response = await getAllPost();
     const post = response.data
+
     if (post.length == 0) return setvalidPost(false)
     setvalidPost(true);
     setPost(response.data.results);
@@ -29,6 +30,7 @@ export function Home() {
           return (
             <Card
               key={item.id}
+              idUser={item.idUser}
               verified={item.verified}
               founder={item.founder}
               id={item.id}
