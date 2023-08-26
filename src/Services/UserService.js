@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = "http://localhost:3008"
+const baseUrl = "https://glorious-belt-bear.cyclic.app/"
 
 export function SearchName(name) {
     const response = axios.get(`${baseUrl}/User/search?name=${name}`)
