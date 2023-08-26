@@ -29,6 +29,7 @@ export function NavBar() {
     resolver: zodResolver(searchSchema),
   });
   const navigate = useNavigate();
+  
   function profile() {
     navigate("/profile");
   }
@@ -42,7 +43,6 @@ export function NavBar() {
 
   useEffect(() => {
     if (!token) {
-      console.log("Usuário não está logado.");
       return;
     }
     const id = getUserIdFromToken(token);
@@ -81,9 +81,16 @@ export function NavBar() {
           <i className="bi bi-infinity"></i>
         </Link>
 
-        {token? (
+        {token ? (
           <>
-            <MiniImg onClick={profile} src={imageURL} />
+            <MiniImg
+              onClick={profile}
+              src={imageURL}
+              style={{
+                backgroundImage: `url(${imageURL})`,
+                backgroundSize: "cover",
+              }}
+            />
           </>
         ) : (
           <>

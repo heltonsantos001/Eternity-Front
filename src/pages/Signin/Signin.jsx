@@ -1,6 +1,7 @@
-import { Link, useNavigate} from "react-router-dom";
-import React,{ useState } from "react";
+import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { loginFormData } from "../../Services/UserService";
+import fundo from "../../img/fundo.jpg";
 
 import {
   Container,
@@ -13,44 +14,54 @@ import {
 } from "../Signup/SignupStyled";
 
 export function Signin() {
-
- const [formData, setFormData] = useState({
-      email: '',
-      password: '',
-    
-    });
-
-    const handleInputChange = event => {
-      const { name, value } = event.target;
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-  }
-  
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     loginFormData(formData)
       .then((response) => {
+        if (!response.token) return;
         localStorage.setItem("authToken", response.token);
-         navigate("/profile");
+        navigate("/profile");
       })
       .catch((error) => {
-        console.log(error);
+        console.log("login", error);
+        swal({
+          title: "EDITAR PERFIL",
+          text: "senha ou email invalido!.",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
       });
+  };
+  const loginNavigate = () => {
+    navigate("/signup");
   };
 
   return (
     <>
-      <Body>
+      <Body
+        style={{
+          backgroundImage: `url(${fundo})`,
+          backgroundSize: "cover",
+        }}
+      >
         <Container>
           <Div>
-            <Link to="/signup">
-              <h1>resgiter</h1>
-            </Link>
+            <h1 onClick={loginNavigate}>resgiter</h1>
           </Div>
           <form onSubmit={handleSubmit}>
             <Alinhar>

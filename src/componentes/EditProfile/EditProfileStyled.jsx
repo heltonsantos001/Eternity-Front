@@ -22,9 +22,9 @@ export const AbsoluteComponent = styled.div`
   }
   label {
     button {
-      i {
+      .bi {
         background-color: #313031;
-        border:none;
+        border: none;
         outline: none;
       }
     }
@@ -41,7 +41,6 @@ export const DivButton = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem;
-
   button {
     padding: 0.3rem;
     width: 5rem;
@@ -50,7 +49,7 @@ export const DivButton = styled.div`
     border-radius: 0.2rem;
     cursor: pointer;
     &:hover {
-      background-color:#636262;
+      background-color: #636262;
     }
   }
 `;

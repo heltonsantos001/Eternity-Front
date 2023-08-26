@@ -12,7 +12,7 @@ export const InputSearch = styled.input`
 
 export const SearchSpace = styled.div`
   position: relative;
-  width: 200px;
+  width: 180px;
   display: flex;
   align-items: center;
 
@@ -65,7 +65,7 @@ export const Button = styled.button`
   background-color: rgb(107, 8, 199);
   border: none;
   outline: none;
-  padding: 0.7rem 0.4rem;
+  padding: 0.7rem .3rem;
   transition: all 0.4 ease-in-out;
   color: #fff;
   border-radius: 0.3rem;
@@ -89,8 +89,10 @@ export const ErrorSpan = styled.span`
   width: 100%;
 
 `
-export const MiniImg = styled.img`
-  width:2.5rem;
-  border-radius:50%;
+export const MiniImg = styled.div`
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    cursor:pointer;
 
-`
+`;

@@ -2,13 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { NavBar } from './componentes/NavBar/NavBar.jsx'
+import {Comments} from './pages/Comments/Comments.jsx'
 import { GlobalStyle } from "./GlobalStyle.jsx"
 import { Home } from './pages/Home/Home.jsx'
 import { Search } from './pages/Search/Search.jsx'
 import { Signup } from './pages/Signup/Signup.jsx';
 import { Signin } from './pages/Signin/Signin.jsx';
 import { Profile } from './pages/Profile/Profile.jsx'
-import { Postagem } from './componentes/Postagem/Postagem.jsx';
+import {ProfileUser} from './pages/ProfileUser/ProfileUser.jsx'
 
 const Router = createBrowserRouter([
   {
@@ -27,10 +28,13 @@ const Router = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
-
       {
-        path: "/postagem",
-        element: <Postagem />,
+        path: "/profile/:id",
+        element: <ProfileUser />,
+      },
+      {
+        path: "/comment/:idPost",
+        element: <Comments />,
       },
     ],
   },

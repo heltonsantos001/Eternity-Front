@@ -6,19 +6,19 @@ export const Body = styled.div`
   position: absolute;
   top:0;
   background-color:#fff;
+  background-position: center center;
 `
 
 export const Container = styled.div`
   width: 20rem;
   height: 25rem;
-  background-image: linear-gradient(180deg, #871bcf, #3d0979);
   border-radius: 1rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  box-shadow:#1e044e 0px 30px 70px 15px;
+
 `;
 
 export const Div = styled.div`
@@ -31,6 +31,7 @@ export const Div = styled.div`
         font-family:Arial, Helvetica, sans-serif;
         font-size:1rem;
         font-weight:100;
+        color:#fff;
 
         &:hover{
             text-decoration:underline;
@@ -55,6 +56,7 @@ export const Input = styled.input`
   border-bottom: 1px solid black;
   padding: 1rem 0.5rem;
   outline: none;
+  color:#fff;
 `;
 
 export const Foto = styled.input`
@@ -71,16 +73,18 @@ export const Foto = styled.input`
 `;
 
 export const DivTermos = styled.div`
-    margin: 1.5rem;
+    margin: 2rem;
 
     input{
         margin-right:.5rem;
     }
 
     label{
-        color:#000000;
-        a{
+        color:#6e6d6d;
+        span{
             color: #ffffff;
+            text-decoration:underline;
+            cursor:pointer;
         }
     }
     
