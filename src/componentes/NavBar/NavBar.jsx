@@ -10,6 +10,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { getUserById } from "../../Services/UserService";
 
+import Eternity from "../../img/Eternity.jpg";
+
 const searchSchema = z.object({
   name: z
     .string()
@@ -34,8 +36,8 @@ export function NavBar() {
     navigate("/profile");
   }
 
-   const [profileImageURL, setProfileImageURL] = useState("");
-   const [userId, setUserId] = useState(null);
+   
+   
    const [imageURL, setImageURL] = useState("");
 
     const token = getTokenFromLocalStorage();
@@ -50,11 +52,10 @@ export function NavBar() {
     getUserById(id)
       .then((response) => {
         const imageURL = response.data.fotoPerfil;
-        setProfileImageURL(imageURL);
         setImageURL(imageURL);
       })
       .catch((error) => {
-        console.error("Erro ao buscar usuário:", error);
+        console.log("Erro ao buscar usuário:", error);
       });
   }, [token]);
 
@@ -63,7 +64,6 @@ export function NavBar() {
     navigate(`/search/${name}`);
     reset();
   }
-
   return (
     <>
       <Nav>
@@ -85,9 +85,8 @@ export function NavBar() {
           <>
             <MiniImg
               onClick={profile}
-              src={imageURL}
               style={{
-                backgroundImage: `url(${imageURL})`,
+                backgroundImage: `url(${imageURL ? imageURL : Eternity})`,
                 backgroundSize: "cover",
               }}
             />

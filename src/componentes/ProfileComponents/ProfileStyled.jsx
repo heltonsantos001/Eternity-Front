@@ -68,26 +68,5 @@ export const Postagem = styled.div`
     width: 25%;
     margin: 0;
   }
-`;
-
-export const Message = styled.div`
-  max-width: 800px;
-  height: 14rem;
-  margin: auto;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 5rem;
-
-  h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #000000;
-    font-size: 1rem;
-    text-align: center;
-  }
-  img {
-    width: 6rem;
-    margin:auto;
-  }
+  
 `;

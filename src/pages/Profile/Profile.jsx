@@ -6,8 +6,8 @@ import {
 } from "../../componentes/Auth/AuthProvider.jsx";
 import { getUserById } from "../../Services/UserService.js";
 import { getAllPostUser } from "../../Services/PostService.js";
-import Eternity from "../../img/Eternity.jpg";
-import { Message } from "../../componentes/ProfileComponents/ProfileStyled";
+import { Loading } from "../../componentes/Loading/Loading.jsx";
+
 import { Delete } from "../../componentes/Delete/Delete.jsx";
 import {Card} from "../../componentes/Card/Card.jsx"
 
@@ -32,11 +32,17 @@ export const Profile = () => {
   
   function getUserByIdFunction() {
     getUserById(id)
-    .then((response) => {
-      const user = response.data;
-      setUser(user);
-      user.founder === "true" ? setfounder(true) : setfounder(false);
-      user.verified === "true" ? setverified(true) : setverified(false);
+      .then((response) => {
+      
+        const user = response.data;
+        
+        setUser(user);
+        
+      user.founder === "true" ? setfounder(true) : 
+          setfounder(false);
+        
+        user.verified === "true" ? setverified(true) : setverified(false);
+        
     })
     .catch((error) => {
       return;
@@ -45,7 +51,9 @@ export const Profile = () => {
   function getAllPostUserFunction(){
    getAllPostUser(id)
      .then((response) => {
+       
        const post = response.data.results;
+       
        if (post.length == 0) return setrenderPost(false);
 
        setrenderPost(true);
@@ -73,17 +81,17 @@ export const Profile = () => {
 
   return (
     <>
-      <ProfileComponents
-        key={user._id}
-        founder={founder}
-        verified={verified}
-        fotoUser={user.fotoPerfil}
-        name={user.name}
-        showButtons={true}
-      />
+     { user || renderPost ? <div>
+        <ProfileComponents
+          key={user._id}
+          founder={founder}
+          verified={verified}
+          fotoUser={user.fotoPerfil}
+          name={user.name}
+          showButtons={true}
+        />
 
-      {renderPost ? (
-        post.map((item) => {
+        {post.map((item) => {
           return (
             <Card
               key={item.id}
@@ -99,23 +107,16 @@ export const Profile = () => {
               fotoUser={item.fotoUser}
             />
           );
-        })
-      ) : (
-        <Message>
-          <h1>Este usuario nao tem nenhuma postagem</h1>
-          <img src={Eternity} alt="" />
-        </Message>
-      )}
+        })}
 
-      {showDeletePost ? post.map((item) => {
-        return (
-          <Delete
-            key={item.id}
-            id={item.id}
-            voltarPost={voltarPost}
-          />
-        );
-        })  : ""}
+        {showDeletePost
+          ? post.map((item) => {
+              return (
+                <Delete key={item.id} id={item.id} voltarPost={voltarPost} />
+              );
+            })
+          : ""}
+      </div> : <Loading />}
     </>
   );
 };

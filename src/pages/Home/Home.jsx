@@ -1,7 +1,8 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../../componentes/Card/Card";
 import { getAllPost } from "../../Services/PostService";
-import { Message } from "../../componentes/ProfileComponents/ProfileStyled"
+
+import { Loading } from "../../componentes/Loading/Loading";
 import Eternity from "../../img/Eternity.jpg";
 
 export function Home() {
@@ -9,19 +10,23 @@ export function Home() {
   const [validPost, setvalidPost] = useState(false);
 
   async function findAllPosts() {
-    const response = await getAllPost();
-    const post = response.data
+    try {
+      const response = await getAllPost();
 
-    if (post.length == 0) return setvalidPost(false)
+    if (!response) return;
+
+    const post = response.data;
+
+    if (post.length == 0) return setvalidPost(false);
     setvalidPost(true);
-    setPost(response.data.results);
+      setPost(response.data.results);
+    } catch (e) { console.log("erro ao buscar post:", e) }
+    
   }
+
   useEffect(() => {
     findAllPosts();
-
   }, [Post]);
-  
- 
 
   return (
     <>
@@ -45,10 +50,7 @@ export function Home() {
           );
         })
       ) : (
-        <Message>
-          <h1>nao existe nenhuma postagem</h1>
-          <img src={Eternity} alt="" />
-        </Message>
+        <Loading />
       )}
     </>
   );
