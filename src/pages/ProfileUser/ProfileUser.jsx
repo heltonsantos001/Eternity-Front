@@ -2,7 +2,7 @@ import { ProfileComponents } from "../../componentes/ProfileComponents/ProfileCo
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Message } from "../../componentes/ProfileComponents/ProfileStyled"
+
 import Eternity from "../../img/Eternity.jpg"
 import { getUserById } from "../../Services/UserService"
 import{getAllPostUser}from'../../Services/PostService'
@@ -56,28 +56,23 @@ export const ProfileUser = () => {
         showButtons={false}
       />
 
-      {renderPost ? (
-        post.map((item) => {
-          return (
-            <Card
-              key={item.id}
-              id={item.id}
-              data={item.data}
-              foto={item.foto}
-              title={item.title}
-              likes={item.likes}
-              comments={item.comments}
-              name={item.name}
-              fotoUser={item.fotoUser}
-            />
-          );
-        })
-      ) : (
-        <Message>
-          <h1>Este usuario nao tem nenhuma postagem</h1>
-            <img src={Eternity} alt="" />
-        </Message>
-      )}
+     
+      {post.map((item) => {
+        return (
+          <Card
+            key={item.id}
+            id={item.id}
+            data={item.data}
+            foto={item.foto}
+            title={item.title}
+            likes={item.likes}
+            comments={item.comments}
+            name={item.name}
+            fotoUser={item.fotoUser}
+          />
+        );
+      })}
+     
     </>
   );
 };
