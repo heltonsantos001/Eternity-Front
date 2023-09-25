@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = "https://blue-chipmunk-coat.cyclic.app/"
+const baseUrl = "https://blue-smiling-katydid.cyclic.app/"
 
 export async function getAllPost() {
     try {
